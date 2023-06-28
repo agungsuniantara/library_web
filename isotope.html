@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Isotope Gallery</title>
+    <style>
+      /* Basic styles for the gallery */
+      .gallery {
+        margin: 20px;
+      }
+
+      .gallery-item {
+        display: inline-block;
+        overflow: hidden;
+        margin: 10px;
+      }
+
+      .gallery-item img {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Isotope Gallery</h1>
+
+    <div class="filter-buttons">
+      <button data-filter="*">All</button>
+      <button data-filter=".nature">Nature</button>
+      <button data-filter=".animals">Animals</button>
+      <button data-filter=".architecture">Architecture</button>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-item nature">
+        <img src="assets/nature.jpg" alt="" />
+      </div>
+      <div class="gallery-item animals">
+        <img src="assets/animal.jpg" alt="" />
+      </div>
+      <div class="gallery-item architecture">
+        <img src="assets/asitektur.jpg" alt="" />
+      </div>
+      <div class="gallery-item nature">
+        <img src="assets/nature.jpg" alt="" />
+      </div>
+      <div class="gallery-item animals">
+        <img src="assets/animal.jpg" alt="" />
+      </div>
+      <div class="gallery-item architecture">
+        <img src="assets/asitektur.jpg" alt="" />
+      </div>
+      <div class="gallery-item nature">
+        <img src="assets/nature.jpg" alt="" />
+      </div>
+      <div class="gallery-item animals">
+        <img src="assets/animal.jpg" alt="" />
+      </div>
+      <div class="gallery-item architecture">
+        <img src="assets/asitektur.jpg" alt="" />
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+    <script>
+      // Initialize Isotope
+      var gallery = document.querySelector(".gallery");
+      var iso = new Isotope(gallery, {
+        itemSelector: ".gallery-item",
+        layoutMode: "fitRows",
+      });
+
+      // Filter buttons event handling
+      var filterButtons = document.querySelectorAll(".filter-buttons button");
+      filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var filterValue = button.getAttribute("data-filter");
+          iso.arrange({ filter: filterValue });
+        });
+      });
+    </script>
+  </body>
+</html>
