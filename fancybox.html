@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="node_modules/@fancyapps/ui/dist/fancybox/fancybox.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .gallery a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .gallery img {
+      max-width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="gallery">
+    <a data-fancybox="gallery" data-src="assets/pexels-consuelo-borroni-14894654.jpg"
+      data-caption="Optional caption, <br />that can contain <em>HTML</em> code">
+      <img src="assets/pexels-consuelo-borroni-14894654.jpg" alt="Image 1" />
+    </a>
+
+    <a data-fancybox="gallery" data-src="assets/pexels-céline-14448266.jpg">
+      <img src="assets/pexels-céline-14448266.jpg" alt="Image 2" />
+    </a>
+
+    <a data-fancybox="gallery" data-src="assets/pexels-lina-kivaka-17211591.jpg">
+      <img src="assets/pexels-lina-kivaka-17211591.jpg" alt="Image 3" />
+    </a>
+  </div>
+  <script src="node_modules/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      Image: {
+        zoom: false,
+        caption: false,
+      },
+    });
+  </script>
+</body>
+
+</html>

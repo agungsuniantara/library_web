@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Contoh Penggunaan AOS Library</title>
+<link rel="stylesheet" href="node_modules/aos/dist/aos.css">
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .card-img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Animate On Scroll (AOS) Demo</h1>
+    
+    <div class="card" data-aos="fade-up">
+      <img src="assets/hugo-matilla-EFuCATqfblI-unsplash.jpg" alt="Gambar 1" class="card-img">
+      <h2>Unnamed Road, Pesanggaran, Kabupaten Banyuwangi, Jawa Timur, Indonesia</h2>
+      <p>Views 3,732,420</p>
+    </div>
+    
+    <div class="card" data-aos="fade-up">
+      <img src="assets/mario-la-pergola-KTHA8H_qpOw-unsplash.jpg" alt="Gambar 2" class="card-img">
+      <h2>Borobudur, Magelang, Central Java, Indonesia</h2>
+      <p>Views 357,197</p>
+    </div>
+    
+    <div class="card" data-aos="fade-up">
+      <img src="assets/pukpik-aB46yUmsMp0-unsplash.jpg" alt="Gambar 3" class="card-img">
+      <h2>Mount Bromo, Indonesia</h2>
+      <p>Views 12,947,904</p>
+    </div>
+  </div>
+  
+<script src="node_modules/aos/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

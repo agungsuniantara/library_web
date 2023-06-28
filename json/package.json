@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@fancyapps/ui": "^5.0.19",
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "aos": "^2.3.4",
+    "jquery": "^3.7.0",
+    "masonry-layout": "^4.2.2",
+    "swiper": "^9.4.1"
+  }
+}

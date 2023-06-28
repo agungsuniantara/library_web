@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 10px;
+      }
+
+      .grid-item {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+
+      .grid-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gallery">
+      <div class="grid-item">
+        <img src="assets/anh-nguyen-fdXnVBurIvU-unsplash.jpg" alt="Image 1" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/anh-nguyen-iJlYqriF-X0-unsplash.jpg" alt="Image 2" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/anh-nguyen-kcA-c3f_3FE-unsplash.jpg" alt="Image 4" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/anh-nguyen-kcA-c3f_3FE-unsplash.jpg" alt="Image 5" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/anh-nguyen-kcA-c3f_3FE-unsplash.jpg" alt="Image 6" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/anh-nguyen-fdXnVBurIvU-unsplash.jpg" alt="Image 7" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/anh-nguyen-iJlYqriF-X0-unsplash.jpg" alt="Image 8" />
+      </div>
+      <div class="grid-item">
+        <img src="assets/anh-nguyen-iJlYqriF-X0-unsplash.jpg" alt="Image 9" />
+      </div>
+      <!-- Add more grid items as needed -->
+    </div>
+<script src="node_modules/masonry-layout/dist/masonry.pkgd.min.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        var gallery = document.getElementById("gallery");
+        var masonry = new Masonry(gallery, {
+          itemSelector: ".grid-item",
+          columnWidth: ".grid-item",
+          gutter: 10,
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Penggunaan jQuery</title>
+</head>
+<body>
+  <button id="myButton">Klik Saya</button>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+    // Menggunakan jQuery untuk menangani event klik pada tombol
+    $(document).ready(function() {
+      $('#myButton').click(function() {
+        alert('Tombol diklik!');
+      });
+    });
+  </script>
+</body>
+</html>

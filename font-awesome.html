@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+  <style>
+    body {
+      background-color: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 80px;
+      color: #999;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .icon:hover {
+      transform: scale(1.1);
+    }
+
+    .liked {
+      color: #c0392b;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-top: 30px;
+      color: #333;
+    }
+
+    p {
+      font-size: 16px;
+      color: #777;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <div class="container">
+    <i id="like-icon" class="fas fa-heart icon"></i>
+    <h1>Font Awesome Icon</h1>
+    <p>Klik ikon hati untuk menyukai halaman ini</p>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#like-icon').click(function() {
+        $(this).toggleClass('liked');
+      });
+    });
+  </script>
+
+</body>
+</html>
