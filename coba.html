@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("img").animate(
+          {
+            width: "100%",
+            height: "100vh",
+          },
+          2000
+        );
+        
+      });
+    </script>
+  </head>
+  <style>
+    body {
+      height: 100%;
+    }
+    .animasi {
+      overflow: hidden;
+    }
+    .animasi p {
+      display: none;
+    }
+    .animasi img {
+      position: absolute;
+    }
+    .body {
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="animasi">
+      <img src="assets/orang.jpeg" alt="" />
+      <p>halo selamat datang</p>
+    </div>
+    <div class="body">
+      <p>ini main body</p>
+    </div>
+  </body>
+</html>
