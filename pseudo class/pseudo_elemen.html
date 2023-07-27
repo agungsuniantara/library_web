@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Style untuk baris pertama dari paragraf */
+      p::first-line {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      /* Style untuk huruf pertama dari paragraf */
+      p::first-letter {
+        font-size: 24px;
+        color: teal;
+      }
+
+      /* Menambahkan konten sebelum paragraf */
+      p::before {
+        content: "Important: ";
+        font-weight: bold;
+        color: red;
+      }
+
+      /* Menambahkan konten setelah paragraf */
+      p::after {
+        content: " - The end.";
+        font-style: italic;
+        color: blue;
+      }
+
+      /* Style untuk elemen div yang merupakan satu-satunya anak */
+      div:only-child {
+        border: 2px solid green;
+      }
+
+      /* Style untuk elemen paragraf yang merupakan satu-satunya elemen paragraf dalam div */
+      div p:only-of-type {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at
+      tortor vel sapien vestibulum eleifend.
+    </p>
+
+    <div>
+      <p>Paragraph 1</p>
+    </div>
+
+    <div>
+      <p>Paragraph 2</p>
+      <p>Paragraph 3</p>
+    </div>
+  </body>
+</html>

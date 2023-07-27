@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* Style untuk checkbox yang dicek */
+    input[type="checkbox"]:checked {
+      border-color: green;
+    }
+
+    /* Style untuk elemen input yang dinonaktifkan */
+    input:disabled {
+      background-color: #f2f2f2;
+      color: #999;
+    }
+
+    /* Style untuk elemen input yang diaktifkan */
+    input:enabled {
+      border: 1px solid #ccc;
+    }
+
+    /* Style untuk elemen input yang wajib diisi */
+    input:required {
+      border-color: red;
+    }
+
+    /* Style untuk elemen input yang opsional */
+    input:optional {
+      border-color: green;
+    }
+  </style>
+  <body>
+    <form>
+      <label for="checkbox">Checkbox:</label>
+      <input type="checkbox" id="checkbox" />
+      <br />
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <br />
+      <label for="username">Username:</label>
+      <input type="text" id="username" disabled />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" />
+    </form>
+  </body>
+</html>

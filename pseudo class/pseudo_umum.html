@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* Style untuk saat dihover */
+    li:hover {
+      background-color: lightblue;
+    }
+
+    /* Style untuk saat ditekan */
+    li:active {
+      background-color: darkblue;
+      color: white;
+    }
+
+    /* Style untuk saat mendapatkan fokus */
+    li:focus {
+      outline: 2px solid red;
+    }
+
+    /* Style untuk tautan yang belum dikunjungi */
+    a:link {
+      color: blue;
+      text-decoration: none;
+    }
+
+    /* Style untuk tautan yang sudah dikunjungi */
+    a:visited {
+      color: purple;
+    }
+
+    /* Style untuk elemen list yang merupakan anak pertama */
+    li:first-child {
+      font-weight: bold;
+    }
+
+    /* Style untuk elemen list yang merupakan anak terakhir */
+    li:last-child {
+      color: red;
+    }
+
+    /* Style untuk elemen list urutan genap */
+    li:nth-child(even) {
+      background-color: lightgray;
+    }
+
+    /* Style untuk elemen list urutan ganjil dari akhir */
+    li:nth-last-child(odd) {
+      background-color: lightgreen;
+    }
+
+    /* Style untuk elemen list yang merupakan elemen kedua dari jenisnya */
+    li:nth-of-type(2) {
+      color: orange;
+    }
+
+    /* Style untuk elemen list urutan ketiga dari belakang dari jenisnya */
+    li:nth-last-of-type(3) {
+      color: brown;
+    }
+
+    /* Style untuk elemen list yang tidak memiliki kelas "special" */
+    li:not(.special) {
+      color: gray;
+    }
+  </style>
+  <body>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+    </ul>
+  </body>
+</html>

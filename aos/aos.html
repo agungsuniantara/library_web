@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Contoh Penggunaan AOS Library</title>
-    <link rel="stylesheet" href="node_modules/aos/dist/aos.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
       body {
         background-color: #f7f7f7;
@@ -24,18 +24,14 @@
       }
 
       .card {
-        background-color: #fff;
+        background-color: black;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         padding: 20px;
         margin-bottom: 40px;
-      }
-
-      .card-img {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-        margin-bottom: 20px;
+        height: 400px;
+        color: white;
+        text-align: center;
       }
     </style>
   </head>
@@ -44,79 +40,39 @@
       <h1>Animate On Scroll (AOS) Demo</h1>
 
       <div class="card" data-aos="fade-up">
-        <img
-          src="assets/mario-la-pergola-KTHA8H_qpOw-unsplash.jpg"
-          alt="Gambar 2"
-          class="card-img"
-        />
         <h2>FADE UP</h2>
       </div>
 
       <div class="card" data-aos="fade-down">
-        <img
-          src="assets/mario-la-pergola-KTHA8H_qpOw-unsplash.jpg"
-          alt="Gambar 2"
-          class="card-img"
-        />
         <h2>FADE DOWN</h2>
       </div>
 
       <div class="card" data-aos="fade-in">
-        <img
-          src="assets/mario-la-pergola-KTHA8H_qpOw-unsplash.jpg"
-          alt="Gambar 2"
-          class="card-img"
-        />
         <h2>FADE IN</h2>
       </div>
 
       <div class="card" data-aos="flip-up">
-        <img
-          src="assets/mario-la-pergola-KTHA8H_qpOw-unsplash.jpg"
-          alt="Gambar 2"
-          class="card-img"
-        />
         <h2>FLIP UP</h2>
       </div>
 
       <div class="card" data-aos="flip-down">
-        <img
-          src="assets/mario-la-pergola-KTHA8H_qpOw-unsplash.jpg"
-          alt="Gambar 2"
-          class="card-img"
-        />
         <h2>FLIP DOWN</h2>
       </div>
 
       <div class="card" data-aos="zoom-out">
-        <img
-          src="assets/mario-la-pergola-KTHA8H_qpOw-unsplash.jpg"
-          alt="Gambar 2"
-          class="card-img"
-        />
         <h2>ZOOM OUT</h2>
       </div>
 
       <div class="card" data-aos="zoom-out-up">
-        <img
-          src="assets/mario-la-pergola-KTHA8H_qpOw-unsplash.jpg"
-          alt="Gambar 2"
-          class="card-img"
-        />
         <h2>ZOOM OUT UP</h2>
       </div>
 
       <div class="card" data-aos="zoom-out-down">
-        <img
-          src="assets/mario-la-pergola-KTHA8H_qpOw-unsplash.jpg"
-          alt="Gambar 2"
-          class="card-img"
-        />
         <h2>ZOOM OUT DOWN</h2>
       </div>
     </div>
 
-    <script src="node_modules/aos/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
     </script>
