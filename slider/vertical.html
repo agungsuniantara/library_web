@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide and Push Menus</title>
+    <script src="js/modernizr.custom.js"></script>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        gap: 2vh;
+      }
+
+      /* css menu */
+
+      .menu {
+        background: #47a3da;
+        position: fixed;
+      }
+
+      .menu h3 {
+        color: #afdefa;
+        font-size: 1.9em;
+        padding: 20px;
+        margin: 0;
+        font-weight: 300;
+        background: #0d77b6;
+      }
+
+      .menu a {
+        display: block;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: 300;
+      }
+
+      .menu a:hover {
+        background: #258ecd;
+      }
+
+      .menu a:active {
+        background: #afdefa;
+        color: #47a3da;
+      }
+
+      /* css vertical */
+
+      .menu-vertical {
+        width: 240px;
+        height: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .menu-vertical a {
+        border-bottom: 1px solid #258ecd;
+        padding: 1em;
+      }
+
+      .menu-left {
+        left: -240px;
+      }
+
+      .menu-right {
+        right: -240px;
+      }
+
+      .menu-left.menu-open {
+        left: 0px;
+      }
+
+      .menu-right.menu-open {
+        right: 0px;
+      }
+
+      /* css horizontal */
+
+      .menu-horizontal {
+        width: 100%;
+        height: 150px;
+        left: 0;
+        z-index: 1000;
+        overflow: hidden;
+      }
+
+      .menu-horizontal h3 {
+        height: 100%;
+        width: 20%;
+        float: left;
+      }
+
+      .menu-horizontal a {
+        float: left;
+        width: 20%;
+        padding: 0.8em;
+        border-left: 1px solid #258ecd;
+      }
+
+      .menu-top {
+        top: -150px;
+      }
+
+      .menu-bottom {
+        bottom: -150px;
+      }
+
+      .menu-top.menu-open {
+        top: 0px;
+      }
+
+      .menu-bottom.menu-open {
+        bottom: 0px;
+      }
+
+      /* CSS push */
+
+      .menu-push {
+        overflow-x: hidden;
+        position: relative;
+        left: 0;
+      }
+
+      .menu-push-toright {
+        left: 240px;
+      }
+
+      .menu-push-toleft {
+        left: -240px;
+      }
+
+      /* css transisi */
+
+      .menu,
+      .menu-push {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+    </style>
+  </head>
+  <body class="menu-push">
+    <nav class="menu menu-vertical menu-left" id="menu-s1">
+      <h3>Menu</h3>
+      <a href="#">link 1</a>
+      <a href="#">link 2</a>
+    </nav>
+    <nav class="menu menu-vertical menu-right" id="menu-s2">
+      <h3>Menu</h3>
+      <a href="#">link 1</a>
+      <a href="#">link 2</a>
+    </nav>
+    <nav class="menu menu-horizontal menu-top" id="menu-s3">
+      <h3>Menu</h3>
+      <a href="#">link 1</a>
+      <a href="#">link 2</a>
+    </nav>
+    <nav class="menu menu-horizontal menu-bottom" id="menu-s4">
+      <h3>Menu</h3>
+      <a href="#">link 1</a>
+      <a href="#">link 2</a>
+    </nav>
+
+    <div class="container">
+      <h2>Slide Menus</h2>
+      <button id="showLeft">Show/Hide Left Slide Menu</button>
+      <button id="showRight">Show/Hide Right Slide Menu</button>
+      <button id="showTop">Show/Hide Top Slide Menu</button>
+      <button id="showBottom">Show/Hide Bottom Slide Menu</button>
+      <button id="showLeftPush">Show/Hide Left Push Menu</button>
+      <button id="showRightPush">Show/Hide Right Push Menu</button>
+    </div>
+
+    <script src="js/classie.js"></script>
+    <script>
+      var menuLeft = document.getElementById("menu-s1");
+      var menuRight = document.getElementById("menu-s2");
+      var menuTop = document.getElementById("menu-s3");
+      var menuBottom = document.getElementById("menu-s4");
+      var showLeft = document.getElementById("showLeft");
+      var showRight = document.getElementById("showRight");
+      var showTop = document.getElementById("showTop");
+      var showBottom = document.getElementById("showBottom");
+      var showLeftPush = document.getElementById("showLeftPush");
+      var showRightPush = document.getElementById("showRightPush");
+      body = document.body;
+
+      showLeft.onclick = function () {
+        classie.toggle(menuLeft, "menu-open");
+        disableOther("showLeft");
+      };
+
+      showRight.onclick = function () {
+        classie.toggle(menuRight, "menu-open");
+        disableOther("showRight");
+      };
+
+      showTop.onclick = function () {
+        classie.toggle(menuTop, "menu-open");
+        disableOther("showTop");
+      };
+
+      showBottom.onclick = function () {
+        classie.toggle(menuBottom, "menu-open");
+        disableOther("showBottom");
+      };
+
+      showLeftPush.onclick = function () {
+        classie.toggle(body, "menu-push-toright");
+        classie.toggle(menuLeft, "menu-open");
+        disableOther("showLeftPush");
+      };
+      showRightPush.onclick = function () {
+        classie.toggle(this, "active");
+        classie.toggle(body, "menu-push-toleft");
+        classie.toggle(menuRight, "menu-open");
+        disableOther("showRightPush");
+      };
+
+      function disableOther(button) {
+        if (button !== "showLeft") {
+          classie.toggle(showLeft, "disabled");
+        }
+        if (button !== "showRight") {
+          classie.toggle(showRight, "disabled");
+        }
+        if (button !== "showTop") {
+          classie.toggle(showTop, "disabled");
+        }
+        if (button !== "showBottom") {
+          classie.toggle(showBottom, "disabled");
+        }
+        if (button !== "showLeftPush") {
+          classie.toggle(showLeftPush, "disabled");
+        }
+        if (button !== "showRightPush") {
+          classie.toggle(showRightPush, "disabled");
+        }
+      }
+    </script>
+  </body>
+</html>
