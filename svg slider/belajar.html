@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>getBoundingClientRect() Example</title>
+    <style>
+      #my-element {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        position: absolute;
+        top: 150px;
+        left: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="my-element"></div>
+
+    <script>
+      const element = document.getElementById("my-element");
+      const rect = element.getBoundingClientRect();
+
+      document.write("Top:", rect.top);
+      document.write("Bottom:", rect.bottom);
+      document.write("Left:", rect.left);
+      document.write("Right:", rect.right);
+      document.write("Width:", rect.width);
+      document.write("Height:", rect.height);
+    </script>
+  </body>
+</html>

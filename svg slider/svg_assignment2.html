@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SVG Price Range Slider with Filter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #slider-container {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+      }
+      #price-range {
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      #range-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+      #product-container {
+        margin-top: 20px;
+      }
+      .product {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="slider-container">
+      <div id="price-range">
+        <svg id="slider-svg" width="100%" height="50">
+          <line
+            x1="10"
+            y1="25"
+            x2="590"
+            y2="25"
+            stroke="gray"
+            stroke-width="1"
+          />
+          <circle id="handle-min" cx="10" cy="25" r="8" fill="blue" />
+          <circle id="handle-max" cx="590" cy="25" r="8" fill="blue" />
+          <line
+            id="range-line"
+            x1="10"
+            y1="25"
+            x2="590"
+            y2="25"
+            stroke="blue"
+            stroke-width="2"
+          />
+        </svg>
+        <div id="range-labels">
+          <span id="min-label">$0</span>
+          <span id="max-label">$1000</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="product-container">
+      <div class="product" data-price="150">Product A ($150)</div>
+      <div class="product" data-price="300">Product B ($300)</div>
+      <div class="product" data-price="450">Product C ($450)</div>
+      <div class="product" data-price="750">Product D ($750)</div>
+      <div class="product" data-price="1000">Product E ($1000)</div>
+    </div>
+
+    <script>
+      const handleMin = document.getElementById("handle-min");
+      const handleMax = document.getElementById("handle-max");
+      const rangeLine = document.getElementById("range-line");
+      const svgContainer = document.getElementById("slider-svg");
+      const minLabel = document.getElementById("min-label");
+      const maxLabel = document.getElementById("max-label");
+      const products = document.querySelectorAll(".product");
+
+      handleMin.addEventListener("mousedown", startSlide);
+      handleMax.addEventListener("mousedown", startSlide);
+
+      function startSlide(event) {
+        event.preventDefault();
+        const handle = event.target;
+        const isMinHandle = handle === handleMin;
+
+        document.addEventListener("mousemove", slide);
+        document.addEventListener("mouseup", endSlide);
+
+        function slide(event) {
+          const svgRect = svgContainer.getBoundingClientRect();
+          const handleX = event.clientX - svgRect.left;
+          const clampedX = Math.min(Math.max(10, handleX), svgRect.width - 10);
+
+          handle.setAttribute("cx", clampedX);
+          updateRangeLine();
+          updateLabels();
+
+          if (isMinHandle) {
+            updateMinValue(clampedX);
+          } else {
+            updateMaxValue(clampedX);
+          }
+        }
+
+        function endSlide() {
+          document.removeEventListener("mousemove", slide);
+          document.removeEventListener("mouseup", endSlide);
+        }
+      }
+
+      function updateRangeLine() {
+        const minX = parseFloat(handleMin.getAttribute("cx"));
+        const maxX = parseFloat(handleMax.getAttribute("cx"));
+        rangeLine.setAttribute("x1", minX);
+        rangeLine.setAttribute("x2", maxX);
+      }
+
+      function updateLabels() {
+        const minX = parseFloat(handleMin.getAttribute("cx"));
+        const maxX = parseFloat(handleMax.getAttribute("cx"));
+        minLabel.textContent = "$" + calculatePrice(minX).toFixed(2);
+        maxLabel.textContent = "$" + calculatePrice(maxX).toFixed(2);
+      }
+
+      function calculatePrice(x) {
+        const sliderWidth = svgContainer.getBoundingClientRect().width - 20;
+        const priceRange = 1000; // Maximum price range
+        return ((x - 10) / sliderWidth) * priceRange;
+      }
+
+      function updateMinValue(handleX) {
+        const minValue = calculatePrice(handleX);
+        filterProducts(minValue, parseFloat(maxLabel.textContent.slice(1)));
+      }
+
+      function updateMaxValue(handleX) {
+        const maxValue = calculatePrice(handleX);
+        filterProducts(parseFloat(minLabel.textContent.slice(1)), maxValue);
+      }
+
+      function filterProducts(minPrice, maxPrice) {
+        products.forEach((product) => {
+          const productPrice = parseFloat(product.getAttribute("data-price"));
+          if (productPrice >= minPrice && productPrice <= maxPrice) {
+            product.style.display = "block";
+          } else {
+            product.style.display = "none";
+          }
+        });
+      }
+
+      // Initial filter
+      filterProducts(0, 1000);
+    </script>
+  </body>
+</html>

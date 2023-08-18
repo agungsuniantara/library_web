@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .container {
+        width: 200px;
+        height: 200px;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <svg width="300" height="200">
+        <!-- Garis -->
+        <line
+          x1="20"
+          y1="20"
+          x2="180"
+          y2="180"
+          stroke="black"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
+
+    <div class="container">
+      <svg width="300" height="200">
+        <!-- Kotak -->
+        <rect
+          x="50"
+          y="50"
+          width="100"
+          height="100"
+          fill="blue"
+          stroke="black"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
+
+    <div class="container">
+      <svg width="300" height="200">
+        <!-- Lingkaran -->
+        <circle
+          cx="100"
+          cy="100"
+          r="30"
+          fill="green"
+          stroke="black"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
+
+    <div class="container">
+      <svg width="300" height="200">
+        <!-- Elips -->
+        <ellipse
+          cx="100"
+          cy="100"
+          rx="40"
+          ry="20"
+          fill="orange"
+          stroke="black"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
+
+    <div class="container">
+      <svg width="300" height="200">
+        <!-- Poligon -->
+        <polygon
+          points="100,60 140,115 60,115"
+          fill="blue"
+          stroke="black"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
+
+    <div class="container">
+      <svg width="300" height="200">
+        <!-- Teks -->
+        <text x="60" y="100" font-family="Arial" font-size="16" fill="brown">
+          Hello, SVG!
+        </text>
+      </svg>
+    </div>
+  </body>
+</html>

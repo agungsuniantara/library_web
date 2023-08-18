@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Size Slider Example</title>
+    <style>
+      #text-container {
+        font-size: 16px;
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="text-size-slider">Adjust Text Size:</label>
+    <input
+      type="range"
+      id="text-size-slider"
+      name="text-size-slider"
+      min="12"
+      max="36"
+      step="2"
+    />
+
+    <div id="text-container">contoh tulisan</div>
+
+    <script>
+      const textSizeSlider = document.getElementById("text-size-slider");
+      const textContainer = document.getElementById("text-container");
+
+      textSizeSlider.addEventListener("input", function () {
+        textContainer.style.fontSize = textSizeSlider.value + "px";
+      });
+    </script>
+  </body>
+</html>

@@ -1,87 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Radial SVG Slider</title>
+    <title>SVG Slider Example</title>
     <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
+      #slider {
+        width: 300px;
+        height: 100px;
+        margin: 20px auto;
       }
-
-      .slider-container {
-        position: relative;
-      }
-
-      circle {
-        fill: #e0e0e0;
-      }
-
-      #thumb {
-        fill: #4285f4;
-        cursor: pointer;
+      #handle {
+        cursor: grab;
       }
     </style>
   </head>
   <body>
-    <div class="slider-container">
-      <svg id="slider" width="200" height="200">
-        <!-- Lingkaran sebagai latar belakang slider -->
-        <circle id="track" cx="100" cy="100" r="80"></circle>
-        <!-- Pegangan slider -->
-        <circle id="thumb" cx="100" cy="20" r="10"></circle>
+    <div id="slider">
+      <svg width="100%" height="100%">
+        <line
+          x1="10"
+          y1="50"
+          x2="500"
+          y2="50"
+          stroke="red"
+          stroke-width="2"
+        />
+        <circle id="handle" cx="10" cy="50" r="8" fill="blue" />
       </svg>
+      <div id="value-display">0</div>
     </div>
 
-    <script src="script.js">
-        document.addEventListener("DOMContentLoaded", function() {
-        const track = document.getElementById("track");
-        const thumb = document.getElementById("thumb");
-        const slider = document.getElementById("slider");
+    <script>
+      const handle = document.getElementById("handle");
+      const valueDisplay = document.getElementById("value-display");
+      const slider = document.getElementById("slider");
+      const sliderWidth = slider.offsetWidth - 20; // Subtracting handle radius
 
-        // Range nilai untuk ukuran lingkaran
-        const minSize = 20;
-        const maxSize = 150;
+      handle.addEventListener("mousedown", startSlide);
 
-        // Fungsi untuk mengatur ukuran lingkaran berdasarkan posisi pegangan slider
-        function setCircleSize(posY) {
-          const sliderHeight = slider.getBoundingClientRect().height;
-          const sliderY = slider.getBoundingClientRect().top;
-          const thumbSize = thumb.getBoundingClientRect().height;
+      function startSlide(event) {
+        event.preventDefault();
+        const handleX = event.clientX - slider.getBoundingClientRect().left;
 
-          const positionPercentage = (posY - sliderY - thumbSize / 2) / (sliderHeight - thumbSize);
-          const circleSize = minSize + (maxSize - minSize) * positionPercentage;
+        document.addEventListener("mousemove", slide);
+        document.addEventListener("mouseup", endSlide);
 
-          // Batasi ukuran lingkaran agar tidak melebihi rentang yang ditentukan
-          const finalSize = Math.min(maxSize, Math.max(minSize, circleSize));
+        function slide(event) {
+          const newX = event.clientX - slider.getBoundingClientRect().left;
+          const clampedX = Math.min(Math.max(10, newX), sliderWidth + 10);
 
-          track.setAttribute("r", finalSize);
-          thumb.setAttribute("cy", posY - sliderY);
+          handle.setAttribute("cx", clampedX);
+          updateValue(clampedX);
         }
 
-        // Event listener untuk interaksi pengguna dengan slider
-        thumb.addEventListener("mousedown", function(e) {
-          e.preventDefault();
-          document.addEventListener("mousemove", onMouseMove);
-          document.addEventListener("mouseup", onMouseUp);
-        });
-
-        function onMouseMove(e) {
-          setCircleSize(e.clientY);
+        function endSlide() {
+          document.removeEventListener("mousemove", slide);
+          document.removeEventListener("mouseup", endSlide);
         }
+      }
 
-        function onMouseUp() {
-          document.removeEventListener("mousemove", onMouseMove);
-          document.removeEventListener("mouseup", onMouseUp);
-        }
-
-        // Atur ukuran lingkaran awal saat halaman dimuat
-        setCircleSize(parseInt(thumb.getAttribute("cy")));
-      });
+      function updateValue(handleX) {
+        const value = Math.round(((handleX - 10) / sliderWidth) * 100);
+        valueDisplay.textContent = value;
+      }
     </script>
   </body>
 </html>
