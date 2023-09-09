@@ -1,14 +1,110 @@
+*{
+  border: none;
+  text-decoration: none;
+}
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 10vh;
+  background-color: rgba(249,173,10,255);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar-logo img{
+  width: 25vh;
+  height: 8vh;
+}
+
+.navbar-tengah{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight:bold;
+  font-size: small;
+}
+
+.navbar-tengah ul, .navbar-kanan ul{
+  list-style: none;
+}
+
+.navbar-tengah li, .navbar-kanan li{
+  display: inline-block;
+  padding: 0 4vh;
+  color: white;
+}
+
+.navbar-tengah a{
+  color: white;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+  height: 100%;
+  padding: 15vh 0 0 0;
+}
+
 .konten{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50vh;
+    width: 40vh;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .konten button{
-    padding: 5vh 10vh;
-    background-color: white;
+    padding: 1vh 3vh;
+    background-color: #ffac0c;
     cursor: pointer;
+    color: white;
+    border-radius: 5px;
+}
+
+.konten img{
+  width: 40vh;
+  height: 40vh;
+  border-radius: 5px;
+}
+
+.konten-2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  width: 150vh;
+  text-align: center;
+  gap: 5vh;
+}
+
+.konten-2 button{
+  padding: 1vh 3vh;
+  background-color: #ffac0c;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+}
+
+.konten-2 img{
+width: 40vh;
+height: 40vh;
+border-radius: 5px;
+}
+
+.deskripsi{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 2vh;
 }
 
 /* animated transition */

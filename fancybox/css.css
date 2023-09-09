@@ -1,0 +1,13 @@
+.gambar{
+height: 100vh;
+width: 50vh;
+
+}
+
+.gambar p{
+    position: absolute;
+    margin-top: -100px;
+    display: flex;
+justify-content: center;
+align-items: center;
+}
