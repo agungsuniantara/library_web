@@ -1,38 +1,101 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <title>Fancybox dengan Efek Zoom dan Tampilan Teks</title>
     <!-- Tambahkan link CSS untuk Fancybox -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <style>
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1vh;
+      }
+      /* Efek zoom saat gambar dihover */
+      .zoom-img-container {
+        overflow: hidden; /* Menyembunyikan bagian gambar yang keluar dari kontainer */
+        width: 50vh;
+        height: 50vh;
+        position: relative; /* Tambahkan posisi relatif */
+      }
+
+      .zoom-img {
+        transition: transform 0.3s;
+        width: 100%; /* Agar gambar mencakup seluruh kontainer */
+        height: 100%; /* Agar gambar tetap proporsional */
+      }
+
+      .zoom-img-container:hover .zoom-img {
+        transform: scale(1.05); /* Ubah faktor skalanya sesuai keinginan Anda */
+      }
+
+      .tulisan {
+        position: absolute;
+        bottom: 0; /* Posisi di bagian bawah */
+        width: 100%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 5px;
+        transform: translateY(100%); /* Awalnya tersembunyi di bawah */
+        transition: transform 0.3s;
+      }
+
+      .zoom-img-container:hover .tulisan {
+        transform: translateY(0); /* Muncul saat gambar dihover */
+      }
+    </style>
   </head>
   <body>
-    <!-- Tautan gambar yang akan dibuka dalam Fancybox -->
-    <a
-      href="/library_web/assets/animal.jpg"
-      data-fancybox="gallery"
-      data-caption="Deskripsi gambar 1"
-    >
-      <img src="/library_web/assets/asitektur.jpg" alt="Thumbnail gambar 1" />
-    </a>
+    <div class="wrapper">
+      <div class="zoom-img-container">
+        <a
+          href="/library_web/assets/animal.jpg"
+          data-fancybox="gallery"
+          data-caption="Deskripsi gambar 1"
+          class="zoom-img"
+        >
+          <img
+            src="/library_web/assets/asitektur.jpg"
+            alt="Thumbnail gambar 1"
+            class="zoom-img"
+          />
+          <div class="tulisan">INI BANGUNAN</div>
+        </a>
+      </div>
 
-    <!-- Tautan gambar kedua -->
-    <a
-      href="/library_web/assets/nature.jpg"
-      data-fancybox="gallery"
-      data-caption="Deskripsi gambar 2"
-    >
-      <img src="/library_web/assets/orang.jpeg" alt="Thumbnail gambar 2" />
-    </a>
+      <div class="zoom-img-container">
+        <a
+          href="/library_web/assets/animal.jpg"
+          data-fancybox="gallery"
+          data-caption="Deskripsi gambar 1"
+          class="zoom-img"
+        >
+          <img
+            src="/library_web/assets/asitektur.jpg"
+            alt="Thumbnail gambar 1"
+            class="zoom-img"
+          />
+          <div class="tulisan">INI BANGUNAN</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Tambahkan jQuery dan Fancybox JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
     <script>
       // Inisialisasi Fancybox
       $(document).ready(function () {
         $('[data-fancybox="gallery"]').fancybox({
           // Konfigurasi tambahan jika diperlukan
+          animationEffect: "zoom-in-out", // Efek zoom saat membuka gambar
+          animationDuration: 500, // Durasi animasi zoom
         });
       });
     </script>
