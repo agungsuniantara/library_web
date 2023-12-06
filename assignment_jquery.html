@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover Effect</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .wrapper {
+        background-color: antiquewhite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 100px;
+      }
+      .image-container {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+      }
+
+      .image-container img {
+        transition: transform 0.3s ease-in-out;
+        cursor: pointer;
+        width: 100px;
+        height: 100px;
+      }
+
+      .paragraph-container {
+        transition: background-color 0.3s ease-in-out;
+        cursor: pointer;
+        color: rgb(193, 110, 110);
+      }
+    </style>
+    <!-- Menggunakan jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Mengubah gambar ketika dihover
+        $(".image-container").hover(
+          function () {
+            $(this).find("img").attr("src", "mobil2.jpg");
+            $(this).find("img").css("transform", "scale(1.2)");
+          },
+          function () {
+            $(this).find("img").attr("src", "mobil.jpg");
+            $(this).find("img").css("transform", "scale(1)");
+          }
+        );
+
+        // Mengganti warna latar belakang paragraf saat dihover
+        $(".paragraph-container").hover(
+          function () {
+            $(this).css("color", "#eb4034");
+          },
+          function () {
+            $(this).css("color", "");
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="image-container">
+        <img src="mobil.jpg" alt="Gambar" />
+        <p class="paragraph-container">mobil terios</p>
+      </div>
+
+      <div class="image-container">
+        <img src="mobil.jpg" alt="Gambar" />
+        <p class="paragraph-container">mobil terios</p>
+      </div>
+
+      <div class="image-container">
+        <img src="mobil.jpg" alt="Gambar" />
+        <p class="paragraph-container">mobil terios</p>
+      </div>
+    </div>
+  </body>
+</html>
