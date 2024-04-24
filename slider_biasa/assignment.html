@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Price Range Filter Example</title>
+  </head>
+  <style>
+    ul {
+      list-style: none;
+    }
+    li {
+      border: 1px solid black;
+      width: 150px;
+      height: 160px;
+      display: inline-block;
+      text-align: center;
+    }
+    #barang img {
+      width: 150px;
+      height: 130px;
+    }
+  </style>
+  <body>
+    <label for="min-price-slider">Minimum Price:</label>
+    <input
+      type="range"
+      id="min-price-slider"
+      name="min-price-slider"
+      min="0"
+      max="1000"
+      step="10"
+    />
+    $<span id="min-price-value">0</span>
+    <br />
+
+    <label for="max-price-slider">Maximum Price:</label>
+    <input
+      type="range"
+      id="max-price-slider"
+      name="max-price-slider"
+      min="0"
+      max="1000"
+      step="10"
+    />
+    $<span id="max-price-value">1000</span>
+    <input type="submit" value="Reset Filter" id="reset">
+
+    <p>Products within selected price range:</p>
+
+    <ul id="product-list">
+      <li>
+        <div id="barang">
+          <img src="SEPATU.jpg" alt="" />
+        </div>
+        Product 1 - $300
+      </li>
+      <li>
+        <div id="barang">
+          <img src="SEPATU.jpg" alt="" />
+        </div>
+        Product 2 - $500
+      </li>
+      <li>
+        <div id="barang">
+          <img src="SEPATU.jpg" alt="" />
+        </div>
+        Product 3 - $800
+      </li>
+    </ul>
+
+    <script>
+      const minPriceSlider = document.getElementById("min-price-slider");
+      const maxPriceSlider = document.getElementById("max-price-slider");
+      const minPriceValue = document.getElementById("min-price-value");
+      const maxPriceValue = document.getElementById("max-price-value");
+      const productList = document.getElementById("product-list");
+      const reset_filter = document.getElementById("reset");
+
+      minPriceSlider.addEventListener("input", function () {
+        minPriceValue.textContent = minPriceSlider.value;
+        updateProductList();
+      });
+
+      maxPriceSlider.addEventListener("input", function () {
+        maxPriceValue.textContent = maxPriceSlider.value;
+        updateProductList();
+      });
+
+      function updateProductList() {
+        const minPrice = parseInt(minPriceSlider.value);
+        const maxPrice = parseInt(maxPriceSlider.value);
+        const products = productList.getElementsByTagName("li");
+
+        for (let i = 0; i < products.length; i++) {
+          const productPrice = parseInt(
+            products[i].textContent.split(" - ")[1].replace("$", "")
+          );
+          if (productPrice >= minPrice && productPrice <= maxPrice) {
+            products[i].style.display = "inline-block";
+          } else {
+            products[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
